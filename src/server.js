@@ -1,11 +1,7 @@
 import React from 'react';
 import Hapi from 'hapi';
-import Good from 'good';
-import Inert from 'inert';
-import Joi from 'joi';
-import { StaticRouter, match } from 'react-router';
+import { match } from 'react-router';
 import ReactDOM from 'react-dom/server';
-import AppRoutes from './application/AppRoutes';
 import LoadPage from './application/LoadPage';
 import ConfigureStore from './application/ConfigureStore';
 import reducer from './reducers';
@@ -30,17 +26,17 @@ server.register(Inert, err => {
                 const path = request.params.path;
                 const methods = {
                     get: 'read',
-                }
+                };
                 const requestType = methods[request.method.toLowerCase()];
                 if (requestType) {
                     services.request(requestType, path, request.query, undefined, data => {
                         const { payload, statusCode } = data;
-                        reply(data).code(statusCode);
+                        reply(payload).code(statusCode);
                     });
                 } else {
                     reply(`Method ${request.method} not found.`).status(500);
                 }
-            }, 
+            },
         }, {
             method: 'GET',
             path: '/files/{param*}',
@@ -48,7 +44,7 @@ server.register(Inert, err => {
                 directory: {
                     path: './dist',
                     index: false,
-                }
+                },
             }
         }, {
             method: 'GET',
@@ -63,10 +59,13 @@ server.register(Inert, err => {
                 ].map(action => store.dispatch(action.getData(request.params.path)));
 
                 Promise.all(getData).then(() => {
-                    const page = ReactDOM.renderToString(<LoadPage location={path} store={store} />);
+                    const page = ReactDOM.renderToString(<LoadPage
+                        location={path}
+                        store={store}
+                    />);
                     reply(`<!doctype html>${page}`);
                 });
-            }
+            },
         },
     ]);
 });
@@ -76,5 +75,5 @@ server.start(err => {
         throw err;
     }
     
-    console.log(`Server running at ${server.info.uri}`)
+    console.log(`Server running at ${server.info.uri}`);
 });
