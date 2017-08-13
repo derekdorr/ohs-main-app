@@ -2,20 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import PageShell from '../PageShell';
 import routes from '../AppRoutes';
 
 const BrowserRoutes = props => {
     const { store } = props;
 
-    return(
+    return (
         <Provider store={store}>
             <BrowserRouter>
                 { routes }
             </BrowserRouter>
         </Provider>
     );
-}
+};
 
 BrowserRoutes.propTypes = {
     store: PropTypes.object,

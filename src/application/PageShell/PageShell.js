@@ -25,7 +25,7 @@ const PageShell = props => {
                     </Header>
                     { children }
                 </Block>
-                <script dangerouslySetInnerHTML={{ __html: `window.initialState = ${ JSON.stringify(state) }`}} />
+                <script dangerouslySetInnerHTML={{ __html: `window.initialState = ${JSON.stringify(state)}` }} />
                 <script src="/files/client.bundle.js" />
             </HTML.Body>
         </HTML>
@@ -33,7 +33,7 @@ const PageShell = props => {
 };
 
 PageShell.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.element,
     state: PropTypes.object,
 };
 PageShell.defaultProps = {

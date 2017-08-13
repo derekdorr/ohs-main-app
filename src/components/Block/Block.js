@@ -8,10 +8,10 @@ class Block extends React.PureComponent {
             <div {...rest}>{children}</div>
         ) : null;
     }
-};
+}
 
 Block.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.element,
 };
 Block.defaultProps = {
     children: null,

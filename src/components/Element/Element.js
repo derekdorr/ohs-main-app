@@ -4,29 +4,6 @@ import pageDataShape from '../../utilities/pageDataShape';
 import styles from './Element.scss';
 
 class Element extends React.PureComponent {
-    camelCase = text => text.replace(/-([a-z])/g, srch => srch[1].toUpperCase());
-
-    sanitizeStyles = styleStr => styleStr.split(';').reduce(
-        (acc, style) => {
-            const [name, value] = style.split(':');
-            const sanitizedName = this.trimString(this.camelCase(name));
-            const sanitizedValue = this.trimString(value);
-            return Object.assign(acc, { [sanitizedName]: sanitizedValue });
-        },
-        {});
-
-    sanitizeAttributes = (attributes = {}) => {
-        const { class: styleName = null, style = '', ...rest } = attributes;
-        return Object.assign(
-            {},
-            {
-                styleName,
-                style: this.sanitizeStyles(style),
-            },
-            rest,
-        );
-    }
-
     getTagName = (node, tag) => {
         switch (node) {
         case 'root':
@@ -43,6 +20,29 @@ class Element extends React.PureComponent {
             (<span>{content}</span>) :
             null
     );
+
+    sanitizeAttributes = (attributes = {}) => {
+        const { class: styleName = null, style = '', ...rest } = attributes;
+        return Object.assign(
+            {},
+            {
+                styleName,
+                style: this.sanitizeStyles(style),
+            },
+            rest,
+        );
+    };
+
+    sanitizeStyles = styleStr => styleStr.split(';').reduce(
+        (acc, style) => {
+            const [name, value] = style.split(':');
+            const sanitizedName = this.trimString(this.camelCase(name));
+            const sanitizedValue = this.trimString(value);
+            return Object.assign(acc, { [sanitizedName]: sanitizedValue });
+        },
+        {});
+
+    camelCase = text => text.replace(/-([a-z])/g, srch => srch[1].toUpperCase());
 
     trimString = (str = '') => str.trim();
 
@@ -63,7 +63,7 @@ class Element extends React.PureComponent {
     );
 
     render() {
-        const { attr, child, node, tag, text } = this.props;
+        const { attr, child, node, tag, text } = this.props; // eslint-disable-line
         const attributes = this.sanitizeAttributes(attr);
         const TagName = this.getTagName(node, tag);
         const childNodes = this.getText(text) || this.mapChildren(child);

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Anchor extends React.PureComponent {
-    render(){
+    render() {
         const { href, title, children, ...rest } = this.props;
         return children ? (
             <a
@@ -14,11 +14,11 @@ class Anchor extends React.PureComponent {
             </a>
         ) : null;
     }
-};
+}
 Anchor.propTypes = {
     href: PropTypes.string.isRequired,
     title: PropTypes.string,
-    children: PropTypes.any,
+    children: PropTypes.element,
 };
 Anchor.defaultProps = {
     title: null,

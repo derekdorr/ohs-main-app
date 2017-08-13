@@ -7,7 +7,7 @@ const receivePageData = data => ({
     data,
 });
 
-const getData = name => dispatch => 
+const getData = name => dispatch =>
     service.request('read', 'page', { name }, undefined, data => {
         dispatch(receivePageData(data.payload));
     });
