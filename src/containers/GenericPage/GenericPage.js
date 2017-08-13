@@ -1,33 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import pageDataShape from '../../utilities/pageDataShape';
 import Element from '../../components/Element';
 import Block from '../../components/Block';
 
 const GenericPage = props => {
     const { page = {} } = props;
-    const { content = [] } = page; 
+    const { content = [] } = page;
     return (
         <Block id="main">
             {
-                content.map((el, index) => (
-                    <Element key={index} {...el} />
+                content.map(el => (
+                    <Element key={`${el.text}-${JSON.stringify(el.child)}`} {...el} />
                 ))
             }
         </Block>
-    )
-}
+    );
+};
 
 GenericPage.propTypes = {
-    menu: PropTypes.object,
-    option: PropTypes.object,
-    page: PropTypes.object,
-}
+    page: pageDataShape.shape,
+};
 GenericPage.defaultProps = {
-    menu: {},
-    option: {},
     page: {},
-}
+};
 GenericPage.displayName = 'GenericPage';
 
 export default connect(state => ({

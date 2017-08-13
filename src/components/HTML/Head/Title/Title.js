@@ -11,11 +11,11 @@ class Title extends React.PureComponent {
 }
 
 Title.propTypes = {
-    children: PropTypes.any,
-}
+    children: PropTypes.element,
+};
 Title.defaultProps = {
     children: null,
-}
+};
 Title.displayName = 'Title';
 
 export default Title;

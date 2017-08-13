@@ -1,6 +1,6 @@
 import React from 'react';
 import Hapi from 'hapi';
-import { match } from 'react-router';
+import Inert from 'inert';
 import ReactDOM from 'react-dom/server';
 import LoadPage from './application/LoadPage';
 import ConfigureStore from './application/ConfigureStore';
@@ -45,7 +45,7 @@ server.register(Inert, err => {
                     path: './dist',
                     index: false,
                 },
-            }
+            },
         }, {
             method: 'GET',
             path: '/{path*}',
@@ -74,6 +74,6 @@ server.start(err => {
     if (err) {
         throw err;
     }
-    
+
     console.log(`Server running at ${server.info.uri}`);
 });

@@ -14,7 +14,7 @@ class Head extends React.PureComponent {
 }
 
 Head.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.element,
 };
 Head.defaultProps = {
     children: null,

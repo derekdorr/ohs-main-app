@@ -8,7 +8,7 @@ class Image extends React.PureComponent {
             <img src={src} alt={alt} {...rest} />
         ) : null;
     }
-};
+}
 Image.propTypes = {
     src: PropTypes.string,
     alt: PropTypes.string.isRequired,

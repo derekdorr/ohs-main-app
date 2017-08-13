@@ -11,10 +11,10 @@ class List extends React.PureComponent {
             </ul>
         ) : null;
     }
-};
+}
 
 List.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.element,
 };
 List.defaultProps = {
     children: null,

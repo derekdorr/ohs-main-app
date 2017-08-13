@@ -11,7 +11,7 @@ class Header extends React.PureComponent {
 }
 
 Header.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.element,
 };
 Header.defaultProps = {
     children: null,

@@ -10,9 +10,9 @@ const transform = obj => {
             return {
                 title,
                 url: url.replace(homeLink, ''),
-            }
+            };
         }),
-    }
+    };
 };
 
 export default {
@@ -20,4 +20,4 @@ export default {
     makeUri,
     options,
     transform,
-}
+};

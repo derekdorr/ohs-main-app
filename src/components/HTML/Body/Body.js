@@ -11,7 +11,7 @@ class Body extends React.PureComponent {
 }
 
 Body.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.element,
 };
 Body.defaultProps = {
     children: null,

@@ -17,7 +17,7 @@ const htmlSanitizer = (arr = []) => arr.map(obj => {
             attr,
             child: htmlSanitizer(child),
         } : null;
-    });
+});
 
 const transform = obj => {
     const pageInfo = obj[0] || {};
@@ -27,7 +27,7 @@ const transform = obj => {
     return {
         title,
         content: htmlSanitizer(htmlparser.parseDOM(content.replace(/\n/g, ''))),
-    }
+    };
 };
 
 export default {
@@ -35,4 +35,4 @@ export default {
     makeUri,
     options,
     transform,
-}
+};

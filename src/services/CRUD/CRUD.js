@@ -2,7 +2,7 @@ import Wreck from 'wreck';
 
 class CRUD {
     constructor() {
-        this._services = {};
+        this.services = {};
     }
 
     registerService = (serviceName, makeUri, options, transform) => {
@@ -10,10 +10,10 @@ class CRUD {
             console.log('Service Error: Service registered without a name');
         } else if (makeUri === undefined) {
             console.log(`Service Error: makeUri undefined for ${serviceName}`);
-        } else if (this._services[serviceName] !== undefined) {
+        } else if (this.services[serviceName] !== undefined) {
             console.log(`Service Error: Service already registered for ${serviceName}`);
         } else {
-            this._services[serviceName] = {
+            this.services[serviceName] = {
                 makeUri,
                 options,
                 transform,
@@ -23,7 +23,7 @@ class CRUD {
 
     request(method, serviceName, params, payload) {
         return new Promise((resolve, reject) => {
-            const service = this._services[serviceName];
+            const service = this.services[serviceName];
             if (service === undefined) {
                 reject(new Error(`Service ${serviceName} is undefined`));
             }
@@ -40,25 +40,25 @@ class CRUD {
                 if (err) {
                     reject(err);
                 }
-                const { statusCode, headers } = response;
-                Wreck.read(response, { json: 'force' }, (err, payload) => {
-                    if (err) {
-                        reject(err);
+                const { statusCode, headers: resHeaders } = response;
+                Wreck.read(response, { json: 'force' }, (readErr, readPayload) => {
+                    if (readErr) {
+                        reject(readErr);
                     }
-                    resolve({ statusCode, headers, payload: transform(payload) });
+                    resolve({ statusCode, resHeaders, payload: transform(readPayload) });
                 });
             });
-        }).then(response => {
-            return response;
-        }).catch(result => {
-            const { message = 'Unknown error occurred' } = result;
-            return {
-                statusCode: 500,
-                payload: {
-                    message,
-                },
-            }           
-        });
+        })
+            .then(response => response)
+            .catch(result => {
+                const { message = 'Unknown error occurred' } = result;
+                return {
+                    statusCode: 500,
+                    payload: {
+                        message,
+                    },
+                };
+            });
     }
 
     create = this.request.bind(this, 'POST');

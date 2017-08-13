@@ -12,7 +12,7 @@ class ListItem extends React.PureComponent {
 }
 
 ListItem.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.element,
 };
 ListItem.defaultProps = {
     children: null,

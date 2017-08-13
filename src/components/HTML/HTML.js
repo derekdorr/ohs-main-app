@@ -7,12 +7,12 @@ class HTML extends React.PureComponent {
     render() {
         const { children, ...rest } = this.props;
         return (
-            <html {...rest}>{children}</html>
+            <html lang="en-US" {...rest}>{children}</html>
         );
     }
-};
+}
 HTML.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.element,
 };
 HTML.defaultProps = {
     children: null,

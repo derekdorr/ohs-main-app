@@ -10,10 +10,10 @@ class Navigation extends React.PureComponent {
             </nav>
         ) : null;
     }
-};
+}
 
 Navigation.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.element,
 };
 Navigation.defaultProps = {
     children: null,

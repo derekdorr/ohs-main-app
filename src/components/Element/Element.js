@@ -1,23 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import cssModules from 'react-css-modules'
+import cssModules from 'react-css-modules';
+import pageDataShape from '../../utilities/pageDataShape';
 import styles from './Element.scss';
 
 class Element extends React.PureComponent {
-    trimString = (str = '') => str.trim();
-
     camelCase = text => text.replace(/-([a-z])/g, srch => srch[1].toUpperCase());
 
-    sanitizeStyles = styles => {
-        const styleArray = styles.split(';').reduce(
-            (acc, style) => {
-                const [name, value] = style.split(':');
-                const sanitizedName = this.trimString(this.camelCase(name));
-                const sanitizedValue = this.trimString(value);
-                return Object.assign(acc, { [sanitizedName]: sanitizedValue });
-            },
-        {})
-    }
+    sanitizeStyles = styleStr => styleStr.split(';').reduce(
+        (acc, style) => {
+            const [name, value] = style.split(':');
+            const sanitizedName = this.trimString(this.camelCase(name));
+            const sanitizedValue = this.trimString(value);
+            return Object.assign(acc, { [sanitizedName]: sanitizedValue });
+        },
+        {});
 
     sanitizeAttributes = (attributes = {}) => {
         const { class: styleName = null, style = '', ...rest } = attributes;
@@ -33,12 +29,12 @@ class Element extends React.PureComponent {
 
     getTagName = (node, tag) => {
         switch (node) {
-            case 'root':
-                return 'div';
-            case 'text':
-                return 'span';
-            default:
-                return tag;
+        case 'root':
+            return 'div';
+        case 'text':
+            return 'span';
+        default:
+            return tag;
         }
     };
 
@@ -48,10 +44,12 @@ class Element extends React.PureComponent {
             null
     );
 
+    trimString = (str = '') => str.trim();
+
     mapChildren = (children = []) => children.map(
         el => {
-            const { text, child, ...rest} = el;
-            return !!el ?
+            const { text, child, ...rest } = el;
+            return el ?
                 (
                     <Element
                         key={`${text}-${JSON.stringify(child)}`}
@@ -60,8 +58,8 @@ class Element extends React.PureComponent {
                         {...rest}
                     />
                 ) :
-                null
-        }
+                null;
+        },
     );
 
     render() {
@@ -71,18 +69,12 @@ class Element extends React.PureComponent {
         const childNodes = this.getText(text) || this.mapChildren(child);
 
         return childNodes ? (
-            <TagName {...attributes}>{childNodes}</TagName>   
+            <TagName {...attributes}>{childNodes}</TagName>
         ) : null;
     }
 }
 
-Element.propTypes = {
-    attr: PropTypes.object,
-    child: PropTypes.array,
-    node: PropTypes.string,
-    tag: PropTypes.string,
-    text: PropTypes.string,
-};
+Element.propTypes = pageDataShape.getShape();
 Element.defaultProps = {
     attr: {},
     child: [],

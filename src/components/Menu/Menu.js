@@ -7,21 +7,6 @@ import Image from '../Image';
 import List from '../List';
 import Navigation from '../Navigation';
 
-const propTypes = {
-    logo: PropTypes.string,
-    navigation: PropTypes.arrayOf(
-        PropTypes.objectOf({
-            title: PropTypes.string.isRequired,
-            url: PropTypes.string.isRequired,
-        })
-    ),
-};
-
-const defaultProps = {
-    logo: null,
-    navigation: []
-}
-
 class Menu extends React.PureComponent {
     render() {
         const { logo, navigation } = this.props;
@@ -54,13 +39,28 @@ class Menu extends React.PureComponent {
                                         {title}
                                     </Anchor>
                                 </List.Item>
-                            )
+                            );
                         })
                     }
                 </List>
             </Navigation>
         );
     }
+}
+
+Menu.propTypes = {
+    logo: PropTypes.string,
+    navigation: PropTypes.arrayOf(
+        PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired,
+        }),
+    ),
 };
+Menu.defaultProps = {
+    logo: null,
+    navigation: [],
+};
+Menu.displayName = 'Menu';
 
 export default cssModules(Menu, styles);

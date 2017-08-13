@@ -8,4 +8,4 @@ export default {
     makeUri,
     options,
     transform,
-}
+};
