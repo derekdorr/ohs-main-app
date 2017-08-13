@@ -1,0 +1,40 @@
+/* Colors */
+$primary: #1b5e20;
+$primary-light: #4c8c4a;
+$primary-dark: #003300;
+$secondary: #2e7d32;
+$secondary-light: #60ad5e;
+$secondary-dark: #005005;
+$font-light: #fff;
+$font-dark: #000;
+
+/* Containers */
+.primary-container {
+    background-color: $primary;
+    color: $font-light;
+}
+
+.primary-light-container {
+    background-color: $primary-light;
+    color: $font-dark;
+}
+
+.primary-dark-container {
+    background-color: $primary-dark;
+    color: $font-light;
+}
+
+.secondary-container {
+    background-color: $secondary;
+    color: $font-light;
+}
+
+.secondary-light-container {
+    background-color: $primary-light;
+    color: $font-dark;
+}
+
+.secondary-dark-container {
+    background-color: $primary-dark;
+    color: $font-light;
+}
