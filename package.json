@@ -14,10 +14,10 @@
   "license": "MIT",
   "dependencies": {
     "good": "^7.2.0",
-    "hapi": "^16.4.3",
+    "hapi": "^16.5.2",
     "html2json": "^1.0.2",
     "htmlparser2": "^3.9.2",
-    "inert": "^4.2.0",
+    "inert": "^4.2.1",
     "joi": "^10.6.0",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
@@ -25,12 +25,12 @@
     "react": "^15.6.1",
     "react-css-modules": "^4.7.0",
     "react-dom": "^15.6.1",
-    "react-redux": "^5.0.5",
-    "react-router": "^4.1.1",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.1.2",
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "wreck": "^12.2.2"
+    "wreck": "^12.2.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -41,16 +41,16 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.4",
-    "eslint": "^4.2.0",
-    "eslint-config-airbnb": "^15.0.2",
+    "eslint": "^4.4.1",
+    "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.2.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "jest": "^20.0.4",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "webpack": "^3.3.0"
+    "webpack": "^3.5.4"
   }
 }

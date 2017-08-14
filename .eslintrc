@@ -5,6 +5,7 @@
         "arrow-parens": [2, "as-needed", { "requireForBlockBody": false }],
         "indent": ["error", 4],
         "linebreak-style": 0,
+        "jsx-a11y/href-no-hash": 0, // rule removed, causes issues in airbnb
         "react/forbid-prop-types": 1,
         "react/jsx-filename-extension": 0,
         "react/jsx-indent": [2, 4],
