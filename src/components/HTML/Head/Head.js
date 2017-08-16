@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from './Link';
 import Meta from './Meta';
 import Title from './Title';
+import child from '../../../shapes/child';
 
 class Head extends React.PureComponent {
     render() {
@@ -13,12 +13,8 @@ class Head extends React.PureComponent {
     }
 }
 
-Head.propTypes = {
-    children: PropTypes.element,
-};
-Head.defaultProps = {
-    children: null,
-};
+Head.propTypes = child.propTypes;
+Head.defaultProps = child.defaultProps;
 Head.displayName = 'Head';
 Head.Title = Title;
 Head.Link = Link;

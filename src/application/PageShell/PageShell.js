@@ -6,6 +6,7 @@ import HTML from '../../components/HTML';
 import Menu from '../../components/Menu';
 import Block from '../../components/Block';
 import Header from '../../components/Header';
+import child from '../../shapes/child';
 import styles from './PageShell.scss';
 
 const PageShell = props => {
@@ -16,6 +17,10 @@ const PageShell = props => {
         <HTML>
             <HTML.Head>
                 <HTML.Head.Title>OHS</HTML.Head.Title>
+                <HTML.Head.Link
+                    href="https://www.otisfield.org/wp-content/themes/ohs-theme/images/logo.png"
+                    rel="icon"
+                />
                 <HTML.Head.Link href="/files/styles.css" rel="stylesheet" />
             </HTML.Head>
             <HTML.Body styleName="body">
@@ -32,14 +37,12 @@ const PageShell = props => {
     );
 };
 
-PageShell.propTypes = {
-    children: PropTypes.element,
+PageShell.propTypes = child.addProps({
     state: PropTypes.object,
-};
-PageShell.defaultProps = {
-    children: null,
+});
+PageShell.defaultProps = child.addDefaults({
     state: {},
-};
+});
 PageShell.displayName = 'PageShell';
 
 export default connect(state => ({ state }))(cssModules(PageShell, styles));

@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Head from './Head';
 import Body from './Body';
+import child from '../../shapes/child';
 
 class HTML extends React.PureComponent {
     render() {
@@ -11,12 +11,8 @@ class HTML extends React.PureComponent {
         );
     }
 }
-HTML.propTypes = {
-    children: PropTypes.element,
-};
-HTML.defaultProps = {
-    children: null,
-};
+HTML.propTypes = child.propTypes;
+HTML.defaultProps = child.defaultProps;
 HTML.displayName = 'HTML';
 HTML.Head = Head;
 HTML.Body = Body;

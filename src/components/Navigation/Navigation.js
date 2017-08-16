@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import child from '../../shapes/child';
 
 class Navigation extends React.PureComponent {
     render() {
@@ -12,12 +12,8 @@ class Navigation extends React.PureComponent {
     }
 }
 
-Navigation.propTypes = {
-    children: PropTypes.element,
-};
-Navigation.defaultProps = {
-    children: null,
-};
+Navigation.propTypes = child.propTypes;
+Navigation.defaultProps = child.defaultProps;
 Navigation.displayName = 'Navigation';
 
 export default Navigation;

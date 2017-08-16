@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import child from '../../shapes/child';
 
 class Anchor extends React.PureComponent {
     render() {
@@ -15,15 +16,14 @@ class Anchor extends React.PureComponent {
         ) : null;
     }
 }
-Anchor.propTypes = {
+Anchor.propTypes = child.addProps({
     href: PropTypes.string.isRequired,
     title: PropTypes.string,
-    children: PropTypes.element,
-};
-Anchor.defaultProps = {
+});
+Anchor.defaultProps = child.addDefaults({
     title: null,
     children: null,
-};
+});
 Anchor.displayName = 'Anchor';
 
 export default Anchor;

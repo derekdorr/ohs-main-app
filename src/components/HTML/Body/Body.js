@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import child from '../../../shapes/child';
 
 class Body extends React.PureComponent {
     render() {
@@ -10,12 +10,8 @@ class Body extends React.PureComponent {
     }
 }
 
-Body.propTypes = {
-    children: PropTypes.element,
-};
-Body.defaultProps = {
-    children: null,
-};
+Body.propTypes = child.propTypes;
+Body.defaultProps = child.defaultProps;
 Body.displayName = 'Body';
 
 export default Body;

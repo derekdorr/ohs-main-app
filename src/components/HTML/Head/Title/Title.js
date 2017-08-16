@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import child from '../../../../shapes/child';
 
 class Title extends React.PureComponent {
     render() {
@@ -10,12 +10,8 @@ class Title extends React.PureComponent {
     }
 }
 
-Title.propTypes = {
-    children: PropTypes.element,
-};
-Title.defaultProps = {
-    children: null,
-};
+Title.propTypes = child.propTypes;
+Title.defaultProps = child.defaultProps;
 Title.displayName = 'Title';
 
 export default Title;

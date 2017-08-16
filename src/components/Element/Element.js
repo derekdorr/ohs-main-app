@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cssModules from 'react-css-modules';
-import pageDataShape from '../../utilities/pageDataShape';
 import styles from './Element.scss';
 
 class Element extends React.PureComponent {
@@ -74,7 +74,13 @@ class Element extends React.PureComponent {
     }
 }
 
-Element.propTypes = pageDataShape.getShape();
+Element.propTypes = {
+    attr: PropTypes.object,
+    child: PropTypes.array,
+    node: PropTypes.string,
+    tag: PropTypes.string,
+    text: PropTypes.string,
+};
 Element.defaultProps = {
     attr: {},
     child: [],

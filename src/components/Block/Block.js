@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import child from '../../shapes/child';
 
 class Block extends React.PureComponent {
     render() {
@@ -10,12 +10,8 @@ class Block extends React.PureComponent {
     }
 }
 
-Block.propTypes = {
-    children: PropTypes.element,
-};
-Block.defaultProps = {
-    children: null,
-};
+Block.propTypes = child.propTypes;
+Block.defaultProps = child.defaultProps;
 Block.displayName = 'Block';
 
 export default Block;

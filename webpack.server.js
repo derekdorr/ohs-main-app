@@ -1,6 +1,7 @@
 const Webpack = require('webpack');
 const path = require('path');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const externals = require('webpack-node-externals')();
 const srcPath = path.join(__dirname, '/src');
 const distPath = path.join(__dirname, '/dist');
 
@@ -32,6 +33,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                 },
+                exclude: /node_modules/,
             },
             {
                 test: /\.scss$/,
@@ -62,4 +64,5 @@ module.exports = {
         },
         modules: ['node_modules'],
     },
+    externals,
 }

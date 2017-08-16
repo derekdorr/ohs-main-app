@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import child from '../../../shapes/child';
 
 class ListItem extends React.PureComponent {
     render() {
@@ -11,12 +11,8 @@ class ListItem extends React.PureComponent {
     }
 }
 
-ListItem.propTypes = {
-    children: PropTypes.element,
-};
-ListItem.defaultProps = {
-    children: null,
-};
+ListItem.propTypes = child.propTypes;
+ListItem.defaultProps = child.defaultProps;
 ListItem.displayName = 'ListItem';
 
 export default ListItem;

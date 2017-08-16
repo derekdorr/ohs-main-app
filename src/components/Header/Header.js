@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import child from '../../shapes/child';
 
 class Header extends React.PureComponent {
     render() {
@@ -10,12 +10,8 @@ class Header extends React.PureComponent {
     }
 }
 
-Header.propTypes = {
-    children: PropTypes.element,
-};
-Header.defaultProps = {
-    children: null,
-};
+Header.propTypes = child.propTypes;
+Header.defaultProps = child.defaultProps;
 Header.displayName = 'Header';
 
 export default Header;

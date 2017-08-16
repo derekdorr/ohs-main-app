@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import pageDataShape from '../../utilities/pageDataShape';
 import Element from '../../components/Element';
 import Block from '../../components/Block';
 
@@ -19,7 +19,7 @@ const GenericPage = props => {
 };
 
 GenericPage.propTypes = {
-    page: pageDataShape.shape,
+    page: PropTypes.object,
 };
 GenericPage.defaultProps = {
     page: {},
